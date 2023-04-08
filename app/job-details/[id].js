@@ -18,7 +18,7 @@ import {
 } from "../../components";
 import { COLORS, SIZES, icons } from "../../constants";
 import useFetch from "../../hook/useFetch";
-import { Tabs } from "../../utils/jobs";
+import { Tabs, googleLink } from "../../utils/jobs";
 
 const JobDetails = () => {
   const params = useSearchParams();
@@ -107,7 +107,7 @@ const JobDetails = () => {
           )}
         </ScrollView>
 
-        <JobFooter />
+        <JobFooter url={data[0]?.job_google_link ?? googleLink} />
       </>
     </SafeAreaView>
   );
