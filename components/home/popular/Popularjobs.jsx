@@ -16,7 +16,7 @@ import useFetch from "../../../hook/useFetch";
 const Popularjobs = () => {
   const router = useRouter();
   const [selectedJob, setSelectedJob] = useState();
-  const { isLoading, error, data } = useFetch("search", {
+  const { isLoading, error, data, isError } = useFetch("search", {
     query: "React Developer",
     num_pages: 1,
   });
@@ -24,6 +24,7 @@ const Popularjobs = () => {
     router.push(`/job-details/${item.job_id}`);
     setSelectedJob(item.job_id);
   };
+
 
   return (
     <View style={styles.container}>
@@ -37,8 +38,8 @@ const Popularjobs = () => {
       <View style={styles.cardsContainer}>
         {isLoading ? (
           <ActivityIndicator size="large" colors={COLORS.primary} />
-        ) : error ? (
-          <Text>Something went wrong</Text>
+        ) : isError ? (
+            <Text>{error}</Text>
         ) : (
           <FlatList
             data={data}

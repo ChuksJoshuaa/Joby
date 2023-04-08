@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import Constants from "expo-constants";
 import { RAPID_API_HOST, RAPID_API_KEY } from "@env";
 
 const useFetch = (endpoint, query) => {
@@ -9,12 +8,16 @@ const useFetch = (endpoint, query) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [isError, setIsError] = useState(false);
 
   const options = {
     method: "GET",
     headers: {
       "X-RapidAPI-Key": rapidApiKey,
       "X-RapidAPI-Host": rapidApiHost,
+      Accept: "application/json",
+      "Content-Type": "application/json;charset=UTF-8",
+      "Access-Control-Allow-Origin": "*",
     },
     url: `https://${rapidApiHost}/${endpoint}`,
     params: {
@@ -30,8 +33,9 @@ const useFetch = (endpoint, query) => {
       setData(resp.data.data);
       setIsLoading(false);
     } catch (error) {
-      setError(error);
-      alert("There is an error");
+      setIsError(true);
+      setError("An error has occurred");
+      console.log(error);
     } finally {
       setIsLoading(false);
     }
@@ -46,7 +50,7 @@ const useFetch = (endpoint, query) => {
     fetchData();
   };
 
-  return { isLoading, error, refetch, data };
+  return { isLoading, error, refetch, data, isError };
 };
 
 export default useFetch;
