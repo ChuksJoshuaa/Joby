@@ -30,7 +30,11 @@ const JobDetails = () => {
     job_id: params.id,
   });
 
-  const onRefresh = () => {};
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    refetch();
+    setRefreshing(false);
+  }, []);
 
   const displayTabContent = () => {
     if (activeTab === "About") {
