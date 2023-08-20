@@ -1,6 +1,7 @@
 # Job Search React Native Application
 
-<img src="https://res.cloudinary.com/chuksmbanaso/image/upload/v1681037615/Screenshot_2023-04-09_at_11.51.27_xukir5.png" title="icon" alt="icon">
+<img src="https://res.cloudinary.com/chuksmbanaso/image/upload/v1692509840/Screenshot_1692509611_syg6yw.png" title="icon" alt="icon">
+<img src="https://res.cloudinary.com/chuksmbanaso/image/upload/v1692509847/Screenshot_1692509622_idi1tb.png" title="icon" alt="icon">
 
 ## Setup
 
